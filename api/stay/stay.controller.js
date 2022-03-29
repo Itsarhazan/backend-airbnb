@@ -1,6 +1,6 @@
 const stayService = require('./stay.service.js.js')
 const logger = require('../../services/logger.service')
-
+// dikla
 // GET LIST
 async function getStays(req, res) {
     try {
