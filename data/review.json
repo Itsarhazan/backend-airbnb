@@ -1,0 +1,14 @@
+[
+  {
+    "toyId": "6233bdb80a53cd43d7abca0b",
+    "userId": "62347227763f78ecbbbd401e",
+    "content": "Amazing toy, you should buy it",
+    "rate": 5
+  },
+  {
+    "toyId": "6233bdb80a53cd43d7abca0e",
+    "userId": "62347252763f78ecbbbd401f",
+    "content": "another one, you should buy it",
+    "rate": 4
+  }
+]

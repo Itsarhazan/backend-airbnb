@@ -1,0 +1,14 @@
+[
+  {
+    "fullname": "puki ben david",
+    "username": "puki",
+    "password": "puki",
+    "isAdmin": false
+  },
+  {
+    "fullname": "avior kahalani",
+    "username": "avior",
+    "password": "avior",
+    "isAdmin": true
+  }
+]
