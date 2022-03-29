@@ -1,4 +1,4 @@
-const stayService = require('./stay.service.js.js')
+const stayService = require('./stay.service')
 const logger = require('../../services/logger.service')
 
 // GET LIST

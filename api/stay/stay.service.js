@@ -2,6 +2,12 @@ const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
 const ObjectId = require('mongodb').ObjectId
 
+// const fs = require('fs');
+// const gStays = require('../../data/stay.json');
+
+// function query() {
+//     return Promise.resolve(gStays)
+// }
 async function query(filterBy) {
     console.log('filterBy', filterBy);
     try {
