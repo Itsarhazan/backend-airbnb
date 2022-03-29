@@ -2,6 +2,8 @@ const stayService = require('./stay.service.js.js')
 const logger = require('../../services/logger.service')
 
 // GET LIST YAY!
+// dikla
+// GET LIST
 async function getStays(req, res) {
     try {
         const stays = await stayService.query(req.query)
