@@ -5,7 +5,10 @@ const logger = require('../../services/logger.service')
 
 async function getStays(req, res) {
     try {
-        const stays = await stayService.query(req.query)
+        const filterBy = req.query
+            // console.log('filterBy from getStays', filterBy);
+        const stays = await stayService.query(filterBy)
+            // console.log('stays from getStays', stays);
         res.json(stays)
     } catch (err) {
         logger.error('Failed to get stays', err)
