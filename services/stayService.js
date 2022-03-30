@@ -2,7 +2,7 @@ const fs = require('fs')
 const { utilService } = require('./utilService')
 const gStays = require('../data/stay.json')
 
-function query(filterBy) {
+function query(filterBy = {}) {
     const stays = _filterStays(filterBy)
     return Promise.resolve(stays)
 }
@@ -49,28 +49,32 @@ function remove(stayId, loggedinUser) {
 
 
 function _filterStays(filterBy) {
+    let filteredStays = []
+
     // filter by name
-    const regex = new RegExp(filterBy.name, 'i')
-    let filteredStays = gStays.filter(stay => regex.test(stay.name))
+    const regex = new RegExp(filterBy.city, 'i')
+    filteredStays = gStays.filter((stay) => regex.test(stay.city))
+        // const regex = new RegExp(filterBy.name, 'i')
+        // let filteredStays = gStays.filter(stay => regex.test(stay.name))
 
-    //filter by inStock
-    if (filterBy.inStock) {
-        filteredStays = filteredStays.filter(stay => {
-            return stay.inStock === JSON.parse(filterBy.inStock)
-        })
-    }
+    // //filter by inStock
+    // if (filterBy.inStock) {
+    //     filteredStays = filteredStays.filter(stay => {
+    //         return stay.inStock === JSON.parse(filterBy.inStock)
+    //     })
+    // }
 
-    //filter by labels
-    if (filterBy.labels.length) {
-        filteredStays = filteredStays.filter(stay => {
-            return stay.labels.some(label => filterBy.labels.includes(label))
-        })
-    }
+    // //filter by labels
+    // if (filterBy.labels.length) {
+    //     filteredStays = filteredStays.filter(stay => {
+    //         return stay.labels.some(label => filterBy.labels.includes(label))
+    //     })
+    // }
 
-    //sorting
-    if (filterBy.sortBy) {
-        filteredStays.autoSortObj(filterBy.sortBy)
-    }
+    // //sorting
+    // if (filterBy.sortBy) {
+    //     filteredStays.autoSortObj(filterBy.sortBy)
+    // }
 
     return filteredStays
 }
