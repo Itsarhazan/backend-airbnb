@@ -77,6 +77,42 @@ function _buildCriteria(filterBy) {
     if (filterBy.name) {
         criteria.name = { $regex: filterBy.name, $options: 'i' }
     }
+  // const stays = await storageService.query(KEY)
+    // let filteredStays = JSON.parse(JSON.stringify(stays))
+
+    // if (filterBy.city) {
+    //     const regex = new RegExp(filterBy.city, 'i')
+    //     filteredStays = filteredStays.filter(stay => regex.test(stay.address.city))
+    // }
+
+    // if (filterBy.capacity) {
+    //     filteredStays = filteredStays.filter(stay => stay.capacity >= filterBy.capacity)
+    // }
+
+    // if (filterBy.price) {
+    //     filteredStays = filteredStays.filter(
+    //         (stay) => filterBy.price[0] < stay.price && stay.price < filterBy.price[1]
+    //     )
+    // }
+
+    // if (filterBy.roomType) {
+    //     const regex = new RegExp(filterBy.roomType, 'i')
+    //     filteredStays = filteredStays.filter(stay => regex.test(stay.roomType))
+    // }
+
+    // console.log('filterBy SERVICE:', filterBy);
+    // if (filterBy.amenities) {
+    //     filteredStays = filteredStays.filter((stay) => {
+    //         return filterBy.amenities.every((amenity) => stay.amenities.includes(amenity))
+    //     })
+    //     console.log('filteredStays.length in amenities:', filteredStays.length);
+    // }
+
+    // return Promise.resolve(filteredStays)
+
+
+
+ 
     if (filterBy.inStock) {
         const inStock = filterBy.inStock === 'true' ? true : false
         criteria.inStock = { $eq: inStock }
