@@ -8,6 +8,7 @@ async function login(req, res) {
         req.session.user = user
         console.log(req.session)
         res.json(user)
+        res.send({ msg: 'Logged in successfully' })
     } catch (err) {
         logger.error('Failed to Login ' + err)
         res.status(401).send({ err: 'Failed to Login' })
