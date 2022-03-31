@@ -4,13 +4,10 @@ const ObjectId = require('mongodb').ObjectId
 
 
 async function query(filterBy) {
-    console.log('filterBy', filterBy);
     try {
         const criteria = _buildCriteria(filterBy)
-        console.log('criteria from query', criteria)
         const collection = await dbService.getCollection('stay')
         var stays = await collection.find(criteria).toArray()
-        console.log('stays from query', stays);
         // _sort(stays, filterBy.sortBy)
         return stays
     } catch (err) {
@@ -74,16 +71,33 @@ async function update(stay) {
 
 function _buildCriteria(filterBy) {
     let criteria = {}
+    console.log('filterBy', filterBy);
 
     // by name
     if (filterBy.city) {
         criteria['address.city'] = { $regex: filterBy.city, $options: 'i' }
     }
 
+    // by amenities
+    if (filterBy.amenities && filterBy.amenities.length) {
+        criteria.amenities = { $in: filterBy.amenities }
+        criteria.amenities = { $all: filterBy.amenities }
+    }
+    
+    // by price
+        if (filterBy.price) {
+            console.log('filterBy.price',filterBy.price);
+            criteria.price = ( {$gte: +filterBy.price[0], $lte: +filterBy.price[1]})
+        }
 
-    console.log('criteria:', criteria)
-    return criteria
+console.log('criteria:', criteria)
+return criteria
 }
+    // by type
+    // if (filterBy.propertyType) {
+    //     criteria.roomType = { $all: filterBy.propertyType }
+    // }
+
 
 // const regex = new RegExp(filterBy.city, 'i')
 // console.log(regex);
