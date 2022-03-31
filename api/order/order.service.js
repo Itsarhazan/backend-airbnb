@@ -4,14 +4,14 @@ const userService = require('../user/user.service')
 
 module.exports = {
   query,
-  addReview,
+  addOrder,
   remove,
 }
 
 async function query(filterBy = {}) {
-  const collection = await dbService.getCollection('review')
+  const collection = await dbService.getCollection('order')
 
-  const reviews = await collection
+  const orders = await collection
     .aggregate([
       { $match: _buildCriteria(filterBy) },
       {
@@ -44,40 +44,40 @@ async function query(filterBy = {}) {
     ])
     .toArray()
 
-  return reviews
+  return orders
 }
 
-async function addReview(review) {
-  const reviewToAdd = {
-    userId: ObjectId(review.userId),
-    toyId: ObjectId(review.toyId),
-    content: review.content,
-    rate: review.rate,
+async function addOrder(order) {
+  const orderToAdd = {
+    userId: ObjectId(order.userId),
+    toyId: ObjectId(order.toyId),
+    content: order.content,
+    rate: order.rate,
   }
 
-  const collection = await dbService.getCollection('review')
-  const addedReview = await collection.insertOne(reviewToAdd)
+  const collection = await dbService.getCollection('order')
+  const addedOrder = await collection.insertOne(orderToAdd)
 
-  reviewToAdd._id = addedReview.insertedId
-  return reviewToAdd
+  orderToAdd._id = addedOrder.insertedId
+  return orderToAdd
 }
 
-async function remove(reviewId) {
+async function remove(orderId) {
   try {
-    const collection = await dbService.getCollection('review')
-    const criteria = { _id: ObjectId(reviewId) }
+    const collection = await dbService.getCollection('order')
+    const criteria = { _id: ObjectId(orderId) }
     await collection.deleteOne(criteria)
   } catch (err) {
-    logger.error(`cannot remove review ${reviewId}`, err)
+    logger.error(`cannot remove order ${orderId}`, err)
     throw err
   }
 }
 
-function _buildCriteria(filterBy) {
-  if (filterBy.userId) {
-    return { userId: ObjectId(filterBy.userId) }
-  } else if (filterBy.toyId) {
-    return { toyId: ObjectId(filterBy.toyId) }
-  }
-  return {}
-}
+// function _buildCriteria(filterBy) {
+//   if (filterBy.userId) {
+//     return { userId: ObjectId(filterBy.userId) }
+//   } else if (filterBy.toyId) {
+//     return { toyId: ObjectId(filterBy.toyId) }
+//   }
+//   return {}
+// }
