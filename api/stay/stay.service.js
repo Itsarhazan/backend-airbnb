@@ -72,28 +72,16 @@ async function update(stay) {
     }
 }
 
-// function _buildCriteria(filterBy) {
-//     let criteria = {};
-//     // console.log(filterBy)
-//     if (!filterBy.country && !filterBy.type) return criteria
-//     if (filterBy.country) {
-//         const regex = { $regex: filterBy.country, $options: 'i' }
-//         criteria.$or = [{ 'address.country': regex },
-//             { 'address.city': regex }
-//         ]
-//     }
-
 function _buildCriteria(filterBy) {
-    console.log('filterBy.city', filterBy.city);
     let criteria = {}
-        // by name
-        // if (filterBy.city) {
-        // const regex = { $regex: filterBy.city, $options: 'i' }
-        // criteria.address.city = { $regex: regex }
 
-    // // }
-    // const regex = new RegExp(filterBy.city, 'i')
-    // criteria.city = { $regex: regex }
+    // by name
+    if (filterBy.city) {
+        criteria['address.city'] = { $regex: filterBy.city, $options: 'i' }
+    }
+
+
+    console.log('criteria:', criteria)
     return criteria
 }
 
