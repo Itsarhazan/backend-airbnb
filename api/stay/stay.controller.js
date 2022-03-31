@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+const stayService = require('./stay.service')
+=======
 const stayService = require('./stay.service.js')
+>>>>>>> 4162eea999f5f5d03f571c5b6c21567422c0b8cb
 const logger = require('../../services/logger.service')
 
 // GET LIST
