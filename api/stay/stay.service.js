@@ -88,7 +88,7 @@ function _buildCriteria(filterBy) {
         if (filterBy.price) {
             console.log('filterBy.price',filterBy.price);
             criteria.price = ( {$gte: +filterBy.price[0], $lte: +filterBy.price[1]})
-        }
+        }  
 
 console.log('criteria:', criteria)
 return criteria
