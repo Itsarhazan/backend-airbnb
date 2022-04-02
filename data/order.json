@@ -1,0 +1,121 @@
+[
+   {
+      "date": "03/31/22",
+      "booker": "Danny",
+      "imgUrl": "https://a0.muscache.com/im/users/6334250/profile_pic/1368287493/original.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Spacious and quiet apartment in Poble Sec",
+      "tripDates": "05/01/22-05/04/22",
+      "nights": 3,
+      "guests": 2,
+      "amount": 1100,
+      "status": "approved"
+   },
+   {
+      "date": "03/13/22",
+      "booker": "Leo",
+      "imgUrl": "https://a0.muscache.com/im/pictures/user/1dcbfcc3-0bff-46a7-8ddd-3c669cecc133.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Spacious and quiet apartment in Poble Sec",
+      "tripDates": "03/14/22-03/18/22",
+      "nights": 4,
+      "guests": 3,
+      "amount": 516,
+      "status": "approved"
+   },
+   {
+      "date": "03/09/22",
+      "booker": "Lizzie",
+      "imgUrl": "https://a0.muscache.com/im/pictures/user/62a32fec-597e-4399-b39f-341b50f9774b.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Habitación centro de Barcelona",
+      "tripDates": "03/10/22-03/12/22",
+      "nights": 2,
+      "guests": 3,
+      "amount": 313,
+      "status": "rejected"
+   },
+   {
+      "date": "02/11/22",
+      "booker": "Debbie",
+      "imgUrl": "https://a0.muscache.com/im/pictures/user/0a118b69-9d68-4b0e-99ba-34fefc2df36b.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Fresh and modern 1BR",
+      "tripDates": "02/16/22-02/17/22",
+      "nights": 1,
+      "guests": 2,
+      "amount": 330,
+      "status": "approved"
+   },
+   {
+      "date": "02/03/22",
+      "booker": "Frank",
+      "imgUrl": "https://a0.muscache.com/im/users/11170203/profile_pic/1428265586/original.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Spacious and quiet apartment in Poble Sec",
+      "tripDates": "02/11/22-02/15/22",
+      "nights": 4,
+      "guests": 3,
+      "amount": 889,
+      "status": "approved"
+   },
+   {
+      "date": "01/13/22",
+      "booker": "Maria",
+      "imgUrl": "https://a0.muscache.com/im/pictures/user/736908a8-0792-4428-a630-d47a3df44bb9.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Fresh and modern 1BR",
+      "tripDates": "01/14/22-01/18/22",
+      "nights": 4,
+      "guests": 5,
+      "amount": 1200,
+      "status": "approved"
+   },
+   {
+      "date": "01/08/22",
+      "booker": "Yaron",
+      "imgUrl": "https://a0.muscache.com/im/pictures/user/fb5c0d62-a663-4ca0-810b-f014d8f5e680.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Habitación centro de Barcelona",
+      "tripDates": "01/15/22-01/18/22",
+      "nights": 3,
+      "guests": 2,
+      "amount": 550,
+      "status": "rejected"
+   },
+   {
+      "date": "12/13/21",
+      "booker": "Asaf",
+      "imgUrl": "https://a0.muscache.com/im/users/4148248/profile_pic/1391131177/original.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Habitación centro de Barcelona",
+      "tripDates": "12/22/21-12/27/21",
+      "nights": 5,
+      "guests": 4,
+      "amount": 1600,
+      "status": "approved"
+   },
+   {
+      "date": "11/18/21",
+      "booker": "Itsar",
+      "imgUrl": "https://a0.muscache.com/im/pictures/user/69d2c9dd-273a-49ca-a18e-2eaf350eaf73.jpg?aki_policy=profile_small",
+      "stay": "Spacious and quiet apartment in Poble Sec",
+      "tripDates": "11/22/21-11/28/21",
+      "nights": 6,
+      "guests": 2,
+      "amount": 2500,
+      "status": "approved"
+   },
+   {
+      "date": "11/13/21",
+      "booker": "Dikla",
+      "imgUrl": "https://a0.muscache.com/im/users/7101594/profile_pic/1372148487/original.jpg?aki_policy=profile_small",
+      "hostId": "6246b125c16a51b61b632cd1",
+      "stay": "Habitación centro de Barcelona",
+      "tripDates": "11/14/21-11/18/21",
+      "nights": 4,
+      "guests": 4,
+      "amount": 3000,
+      "status": "approved"
+   }
+]

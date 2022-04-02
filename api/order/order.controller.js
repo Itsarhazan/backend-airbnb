@@ -4,7 +4,6 @@ const logger = require('../../services/logger.service')
 module.exports = {
   getOrders,
   addOrder,
-  deleteOrder,
 }
 
 async function getOrders(req, res) {
@@ -29,12 +28,3 @@ async function addOrder(req, res) {
   }
 }
 
-async function deleteOrder(req, res) {
-  try {
-    await orderService.remove(req.params.id)
-    res.send({ msg: 'Deleted successfully' })
-  } catch (err) {
-    logger.error('Failed to delete order', err)
-    res.status(500).send({ err: 'Failed to delete order' })
-  }
-}

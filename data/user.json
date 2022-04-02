@@ -1,14 +1,16 @@
 [
   {
-    "fullname": "puki ben david",
-    "username": "puki",
-    "password": "puki",
-    "isAdmin": false
+    "fullname": "Elana Hecht",
+    "imgUrl": "https://res.cloudinary.com/lanzi/image/upload/v1648799685/myface_mwdjn6.jpg",
+    "username": "elana",
+    "password": "1234",
+    "isHost": false
   },
   {
-    "fullname": "avior kahalani",
-    "username": "avior",
-    "password": "avior",
-    "isAdmin": true
+    "fullname": "Cristina",
+    "imgUrl": "https://a0.muscache.com/im/users/6107595/profile_pic/1442432675/original.jpg?aki_policy=profile_small",
+    "username": "host",
+    "password": "host",
+    "isHost": true
   }
 ]

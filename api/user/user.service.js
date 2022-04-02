@@ -38,11 +38,11 @@ async function getById(userId) {
         const user = await collection.findOne({ _id: ObjectId(userId) })
         delete user.password
 
-        user.givenReviews = await reviewService.query({ byUserId: ObjectId(user._id) })
-        user.givenReviews = user.givenReviews.map(review => {
-            delete review.byUser
-            return review
-        })
+        // user.givenReviews = await reviewService.query({ byUserId: ObjectId(user._id) })
+        // user.givenReviews = user.givenReviews.map(review => {
+        //     delete review.byUser
+        //     return review
+        // })
 
         return user
     } catch (err) {
@@ -78,7 +78,6 @@ async function update(user) {
             _id: ObjectId(user._id), // needed for the returnd obj
             username: user.username,
             fullname: user.fullname,
-            score: user.score,
         }
         const collection = await dbService.getCollection('user')
         await collection.updateOne({ _id: userToSave._id }, { $set: userToSave })
@@ -96,7 +95,8 @@ async function add(user) {
             username: user.username,
             password: user.password,
             fullname: user.fullname,
-            score: 100
+            imgUrl: "https://res.cloudinary.com/lanzi/image/upload/v1648800611/no-avatar_u4pf96.jpg",
+            isHost: false,
         }
         const collection = await dbService.getCollection('user')
         await collection.insertOne(userToAdd)
@@ -119,9 +119,6 @@ function _buildCriteria(filterBy) {
                 fullname: txtCriteria
             }
         ]
-    }
-    if (filterBy.minBalance) {
-        criteria.score = { $gte: filterBy.minBalance }
     }
     return criteria
 }

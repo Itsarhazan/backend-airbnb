@@ -5,54 +5,33 @@ const userService = require('../user/user.service')
 module.exports = {
   query,
   addOrder,
-  remove,
 }
 
 async function query(filterBy = {}) {
-  const collection = await dbService.getCollection('order')
-
-  const orders = await collection
-    .aggregate([
-      { $match: _buildCriteria(filterBy) },
-      {
-        $lookup: {
-          from: 'user',
-          foreignField: '_id',
-          localField: 'userId',
-          as: 'user',
-        },
-      },
-      { $unwind: '$user' }, // [{.....}] ==> {.....}
-      {
-        $lookup: {
-          from: 'toy',
-          foreignField: '_id',
-          localField: 'toyId',
-          as: 'toy',
-        },
-      },
-      { $unwind: '$toy' }, // [{.....}] ==> {.....}
-      {
-        $project: {
-          _id: 1,
-          content: 1,
-          rate: 1,
-          user: { _id: 1, username: 1 },
-          toy: { _id: 1, name: 1, price: 1 },
-        },
-      },
-    ])
-    .toArray()
-
-  return orders
+  try {
+    const criteria = _buildCriteria(filterBy)
+    const collection = await dbService.getCollection('order')
+    var orders = await collection.find(criteria).toArray()
+    // _sort(orders, filterBy.sortBy)
+    return orders
+  } catch (err) {
+    logger.error('cannot find stays', err)
+    throw err
+  }
 }
 
 async function addOrder(order) {
   const orderToAdd = {
-    userId: ObjectId(order.userId),
-    toyId: ObjectId(order.toyId),
-    content: order.content,
-    rate: order.rate,
+    hostId: ObjectId(order.hostId),
+    date: order.date,
+    booker: order.booker,
+    imgUrl: order.imgUrl,
+    stay: order.stay,
+    tripDates: order.tripDates,
+    nights: order.nights,
+    guests: order.guests,
+    amount: order.amount,
+    status: 'pending'
   }
 
   const collection = await dbService.getCollection('order')
@@ -62,22 +41,11 @@ async function addOrder(order) {
   return orderToAdd
 }
 
-async function remove(orderId) {
-  try {
-    const collection = await dbService.getCollection('order')
-    const criteria = { _id: ObjectId(orderId) }
-    await collection.deleteOne(criteria)
-  } catch (err) {
-    logger.error(`cannot remove order ${orderId}`, err)
-    throw err
+function _buildCriteria(filterBy) {
+  if (filterBy.userId) {
+    return { userId: ObjectId(filterBy.userId) }
+  } else if (filterBy.stayId) {
+    return { stayId: ObjectId(filterBy.stayId) }
   }
+  return {}
 }
-
-// function _buildCriteria(filterBy) {
-//   if (filterBy.userId) {
-//     return { userId: ObjectId(filterBy.userId) }
-//   } else if (filterBy.toyId) {
-//     return { toyId: ObjectId(filterBy.toyId) }
-//   }
-//   return {}
-// }
