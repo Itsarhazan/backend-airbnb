@@ -4,7 +4,8 @@ const userService = require('../user/user.service')
 
 module.exports = {
   query,
-  addOrder,
+  add,
+  update
 }
 
 async function query(filterBy = {}) {
@@ -20,25 +21,28 @@ async function query(filterBy = {}) {
   }
 }
 
-async function addOrder(order) {
-  const orderToAdd = {
-    hostId: ObjectId(order.hostId),
-    date: order.date,
-    booker: order.booker,
-    imgUrl: order.imgUrl,
-    stay: order.stay,
-    tripDates: order.tripDates,
-    nights: order.nights,
-    guests: order.guests,
-    amount: order.amount,
-    status: 'pending'
+async function add(order) {
+  try {
+    const collection = await dbService.getCollection('order')
+    const addedOrder = await collection.insertOne(order)
+    return addedOrder
+  } catch (err) {
+    logger.error('cannot insert order', err)
+    throw err
   }
+}
 
-  const collection = await dbService.getCollection('order')
-  const addedOrder = await collection.insertOne(orderToAdd)
-
-  orderToAdd._id = addedOrder.insertedId
-  return orderToAdd
+async function update(order) {
+  try {
+    var id = ObjectId(order._id)
+    delete order._id
+    const collection = await dbService.getCollection('order')
+    await collection.updateOne({ _id: id }, { $set: { ...order } })
+    return order
+  } catch (err) {
+    logger.error(`cannot update order ${order._id}`, err)
+    throw err
+  }
 }
 
 function _buildCriteria(filterBy) {
